@@ -1,0 +1,19 @@
+df = df.drop(columns = ['Annual bonus+stocks one year ago. Only answer if staying in same country',
+                        'Have you lost your job due to the coronavirus outbreak?', 
+                        'Have you been forced to have a shorter working week (Kurzarbeit)? If yes, how many hours per week',
+                        'Have you received additional monetary support from your employer due to Work From Home? If yes, how much in 2020 in EUR',
+                        'Timestamp',
+                        'Years of experience in Germany',
+                        'Annual brutto salary (without bonus and stocks) one year ago. Only answer if staying in the same country',
+                        'Annual bonus+stocks one year ago. Only answer if staying in same country','Yearly bonus + stocks in EUR'])
+
+
+
+df.rename(columns = {'Your main technology / programming language': 'Main technology', 
+                     'Position ': 'Position',
+                     'Other technologies/programming languages you use often': 'Other technologies', 
+                     'Yearly brutto salary (without bonus and stocks) in EUR': 'Yearly salary', 
+                     'Number of vacation days': 'Vacation days', 
+                     'Main language at work': 'Language at work',
+                     'Yearly bonus + stocks in EUR':'Yearly bonus',
+                     'Total years of experience': 'Years of experience' }, inplace = True)
