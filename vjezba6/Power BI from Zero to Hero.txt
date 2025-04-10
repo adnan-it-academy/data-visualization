@@ -1,0 +1,121 @@
+Pre requesites:
+
+	- Download and install the latest Power BI Desktop application: https://powerbi.microsoft.com/en-us/blog/power-bi-august-2023-feature-summary/
+
+STEPS
+
+1) Download historical stock data from Finance Yahoo:https://finance.yahoo.com/
+	APPLE > Historical Data > Max Time Period > Apply > Download
+  	AMAZON > Historical Data > Max Time Period > Apply > Download
+  	MICROSOFT > Historical Data > Max Time Period > Apply > Download
+
+2) Import data into Power BI Desktop
+	Get Data > Text/CSV
+
+3) Tranform data and append the 3 CSV files
+
+4) Create a calendar table with Power Query (add additional columns)
+	1) Create 2 Lists:
+
+	StartDate = #"Date.StartOfYear"(List.Min(TableName[DateColumn]))
+	EndDate: #"Date.EndOfYear"(List.Max(TableName[DateColumn]))
+
+	2) Create a table with the first two lists:
+
+	Dates = {Number.From(#"StartDate")..Number.From(#"EndDate")}
+
+5) Create a relationship between the fact table and calendar tables
+
+6) Canvas Settings
+	
+	Type: Custom
+        Height: 936 px	
+        Width: 1664 px
+        
+        Canvas Backgorund: #E6E6E6
+
+7) Select theme (.json File)
+	View >  Theme > Browse for themes > PBI Full Course.json
+
+8) Insert a Power BI Background
+	Use Figma to create a PBI Background
+
+9) Create measures with DAX
+	Create a table to store the measures
+	
+	Stock Price
+	- Avg. Stock Price
+        - Avg. Stock Price AAPL
+        - Avg. Stock Price AMZ
+        - Avg. Stock Price MSFT
+        - PY Avg. Stock Price
+        - Stock Price YoY Growth %
+       
+	Stock Volume
+	- Stock Volume
+	- PY Stock Volume
+	- Stock Volume YoY Growth %
+	- Format Stock Volume --FORMAT(measure,"#,##0,,,.00B")
+	- Format PY Stock Volume --FORMAT(measure,"#,##0,,,.00B")
+	
+	KPI Measure
+	- YoY Growth % GreenRed
+ 		Create a measure with UNICHAR.
+		Green Circle: 128994
+		Red Circle: 128992
+	
+
+10) Insert the visualizations
+    	- Area chart for stock price
+	- Column chart for stock volume
+	- Table with YoY Stock Price Growth - Apply Conditional formatting
+	- Table with YoY Stock Volume Growth - Apply conditional formatting
+        - Multicard for YoY Stock Price
+	- New Card with 4 measures
+	- Period slicer
+	- Year slicer
+	- Company slicer
+	- Clear All slicers
+
+11) Add a Title: Stock Performance Over Time for 3 US Companies
+
+12) Add a Company Logo
+
+Bonus:
+Add a customized date filter
+
+	12.1 Create a "Custom Period" Table
+		7D
+		15D
+		1M
+		6M
+		YTD
+		1Y
+		3Y
+		5Y
+		Max
+	12.2 Create a new "Dates" Table
+	12.3 Create a "Period Filter" Measure
+	12.4 Create a period slicer and apply the period filter measure to all visuals.
+        12.5 Create a "Date Filter" Measure and apply it to the "Date" and "Year" slicers
+        12.6 Edit Interactions between the "Period" slicer and the "Date" and "Year" sliders
+
+13) Publish the report to the Power BI service and share it with your end-users
+
+	
+
+
+Additional Information
+
+HEX COLOR CODES:
+Apple Hex Color Code: #000000
+AMAZON Hex Color Code: #FF9900
+Microsoft Hex Color Code: #00A3EE
+
+Sources: 
+Amazon Logo: https://blog.ipc-computer.de/en/amazon-logo/
+Apple Logo: https://1000logos.net/apple-logo/
+Microsoft Logo: https://pngimg.com/image/19841
+Tech: https://nationaltoday.com/world-wide-web-day/
+
+
